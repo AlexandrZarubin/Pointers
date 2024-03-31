@@ -7,7 +7,6 @@ void FilldRand(int arr[],const int Size, int minRand=0, int maxRand=100); //за
 void Print(const int arr[], const int Size);							  //вывод
 int NumberOfEvenElements(const int arr[], const int Size);                //поиск четных не четных
 int* NumberEven(const int arr[], const int Size, int& ReSize, bool Even = true);//раскол массива
-int* push_back(int* arr[], const int Number);
 
 void main()
 {
@@ -19,7 +18,7 @@ void main()
 	int* Even = nullptr;	//указатель на динамический массив
 	int EvenSize = 0;		//для print
 	int* Odd = nullptr;		//указатель на динамический массив
-	int OddSize = 0;		// для print
+	int OddSize = 0;		//для print
 	Even = NumberEven(Split, SIZE,EvenSize, 1); //заполнение массива четные
 	Odd = NumberEven(Split, SIZE,OddSize, 0);	//заполнение массива не четные
 	cout << endl;
@@ -107,7 +106,3 @@ int* NumberEven(const int arr[], const int Size, int&ReSize, bool Even)
 	return arrDynamic;
 }
 
-int* push_back(int* arr[], const int Number)
-{
-	return nullptr;
-}
