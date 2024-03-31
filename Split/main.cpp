@@ -17,9 +17,9 @@ void main()
 	FilldRand(Split,SIZE);	//Заполение массива
 	Print(Split,SIZE);		//Вывод массива
 	int* Even = nullptr;	//указатель на динамический массив
-	int EvenSize = 0;		//размер динамического массива
+	int EvenSize = 0;		//для print
 	int* Odd = nullptr;		//указатель на динамический массив
-	int OddSize = 0;		// размер динамического массива
+	int OddSize = 0;		// для print
 	Even = NumberEven(Split, SIZE,EvenSize, 1); //заполнение массива четные
 	Odd = NumberEven(Split, SIZE,OddSize, 0);	//заполнение массива не четные
 	cout << endl;
