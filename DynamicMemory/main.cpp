@@ -15,6 +15,7 @@ int* pop_back(int arr[], int& n);
 int* pop_front(int arr[], int& n);
 int* erase(int arr[], int& n, const int index);
 int* insert(int arr[], int& n, const int index, const int value);
+
 //void 
 #define DYNAMIC_MEMORY1
 //#define DYNAMIC_MEMORY2
@@ -50,10 +51,10 @@ void main()
 	arr = pop_front(arr, n);
 	cout << "pop_front\t"; Print(arr, n);
 
-	arr = erase(arr, n,2);
+	arr = erase(arr, n,0);
 	cout << "erase\t\t"; Print(arr, n);
 
-	arr = insert(arr, n, 2,34);
+	arr = insert(arr, n, 0,34);
 	cout << "insert\t\t"; Print(arr, n);
 
 	delete[] arr;
