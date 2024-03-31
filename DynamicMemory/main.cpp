@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -8,13 +8,13 @@ void FillRand(int arr[], const int n);
 void Print(const int arr[], const int n);
 void Print( int** arr, const int rows, const int cols);
 
-int* push_back(int arr[], int& n, int value);
-int* push_front(int arr[], int& n,const int value);
+int* push_back(int arr[], int& n, int value);		//РґРѕР±Р°РІР»СЏСЋС‰РёР№ Р·РЅР°С‡РµРЅРёРµ РІ РєРѕРЅРµС† РјР°СЃСЃРёРІР° РІ С„СѓРЅРєС†РёСЋ
+int* push_front(int arr[], int& n,const int value); //РґРѕР±Р°РІР»СЏРµС‚ Р·РЅР°С‡РµРЅРёРµ РІ РЅР°С‡Р°Р»Рѕ РјР°СЃСЃРёРІР°
 
-int* pop_back(int arr[], int& n);
-int* pop_front(int arr[], int& n);
-int* erase(int arr[], int& n, const int index);
-int* insert(int arr[], int& n, const int index, const int value);
+int* pop_back(int arr[], int& n);					//СѓРґР°Р»СЏРµС‚ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР°
+int* pop_front(int arr[], int& n);					//СѓРґР°Р»СЏРµС‚ РЅСѓР»РµРІРѕР№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР°
+int* erase(int arr[], int& n, const int index);		//СѓРґР°Р»СЏРµС‚ СЌР»РµРјРµРЅС‚ РёР· РјР°СЃСЃРёРІР° РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РёРЅРґРµРєСЃСѓ
+int* insert(int arr[], int& n, const int index, const int value);//РІСЃС‚Р°РІР»СЏРµС‚ Р·РЅР°С‡РµРЅРёРµ РІ РјР°СЃСЃРёРІ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РёРЅРґРµРєСЃСѓ
 
 //void 
 #define DYNAMIC_MEMORY1
@@ -26,7 +26,7 @@ void main()
 	int n = 5;
 	cout << "enter  size ";
 	//cin >> n;
-	//объявление динамического массива
+	//РѕР±СЉСЏРІР»РµРЅРёРµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°
 	int* arr = new int[n];
 	cout << arr << endl;
 
@@ -35,32 +35,34 @@ void main()
 
 	int Value=101;
 	
-	//cout << "\nenter the value to be completed \n";
-	//cin >> Value;
-	 arr = push_back(arr, n, Value);
+	//cout << "enter the value to be completed \n";cin >> Value;
+	 arr = push_back(arr, n, Value);//РґРѕР±Р°РІР»СЏСЋС‰РёР№ Р·РЅР°С‡РµРЅРёРµ РІ РєРѕРЅРµС† РјР°СЃСЃРёРІР° РІ С„СѓРЅРєС†РёСЋ
 	 cout << "push_back\t"; Print(arr, n);
 	
-	// cout << "\nenter the value to be completed \n";
-	//cin >> Value;
-	arr = push_front(arr, n, Value);
+	// cout << "enter the value to be completed \n";cin >> Value;
+	arr = push_front(arr, n, Value);//РґРѕР±Р°РІР»СЏРµС‚ Р·РЅР°С‡РµРЅРёРµ РІ РЅР°С‡Р°Р»Рѕ РјР°СЃСЃРёРІР°
 	cout << "push_front\t"; Print(arr, n);
 
-	arr = pop_back(arr, n);
+	arr = pop_back(arr, n);//СѓРґР°Р»СЏРµС‚ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР°
 	cout << "pop_back\t"; Print(arr, n);
 	
-	arr = pop_front(arr, n);
+	arr = pop_front(arr, n);//СѓРґР°Р»СЏРµС‚ РЅСѓР»РµРІРѕР№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР°
 	cout << "pop_front\t"; Print(arr, n);
 
-	arr = erase(arr, n,0);
+	//cout << "enter the index to be completed \n";cin >> index;
+	arr = erase(arr, n,2);//СѓРґР°Р»СЏРµС‚ СЌР»РµРјРµРЅС‚ РёР· РјР°СЃСЃРёРІР° РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РёРЅРґРµРєСЃСѓ
 	cout << "erase\t\t"; Print(arr, n);
 
-	arr = insert(arr, n, 0,34);
+	//cout << "enter the value to be completed \n";cin >> Value;
+	//int index;
+	//cout << "enter the index to be completed \n";cin >> index;
+	arr = insert(arr, n, 2,34);//РІСЃС‚Р°РІР»СЏРµС‚ Р·РЅР°С‡РµРЅРёРµ РІ РјР°СЃСЃРёРІ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РёРЅРґРµРєСЃСѓ
 	cout << "insert\t\t"; Print(arr, n);
 
 	delete[] arr;
 
 	cout << endl;
-	//отдаем память обратно
+	//РѕС‚РґР°РµРј РїР°РјСЏС‚СЊ РѕР±СЂР°С‚РЅРѕ
 	cout << arr << endl;
 	//FillRand(arr, n);
 	//Print(arr, n);
@@ -69,37 +71,37 @@ void main()
 
 #endif // DYNAMIC_MEMORY1
 #ifdef DYNAMIC_MEMORY2
-	///объявление двумерного динамического массива///
+	///РѕР±СЉСЏРІР»РµРЅРёРµ РґРІСѓРјРµСЂРЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°///
 ////////////////////////////////////////////////
 /////////////////////////////////////////////////
 	int rows;
 	int cols;
-	cout << "Введите кол-во строк: "; cin >> rows;
-	cout << "Введите кол-во элементов строки: "; cin >> cols;
-	//1) создаем массив указателей
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»-РІРѕ СЃС‚СЂРѕРє: "; cin >> rows;
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»-РІРѕ СЌР»РµРјРµРЅС‚РѕРІ СЃС‚СЂРѕРєРё: "; cin >> cols;
+	//1) СЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№
 	int** arr = new int* [rows];
-	//2) выделяем память под строки
+	//2) РІС‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РїРѕРґ СЃС‚СЂРѕРєРё
 	for (int i = 0; i < rows; i++)
 	{
 		arr[i] = new int[cols] {};
 	}
 	///////////////////////////////////////////////////////////
-	///////использование двухмерного динамического массива/////
+	///////РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РґРІСѓС…РјРµСЂРЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°/////
 	///////////////////////////////////////////////////////////
 
 	Print(arr, rows, cols);
 
 	///////////////////////////////////////////////////////////
-	///////удаление двухмерного динамического массива//////////
+	///////СѓРґР°Р»РµРЅРёРµ РґРІСѓС…РјРµСЂРЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°//////////
 	///////////////////////////////////////////////////////////
 
-	//1)сначала удалемя строки двухмерного массива
+	//1)СЃРЅР°С‡Р°Р»Р° СѓРґР°Р»РµРјСЏ СЃС‚СЂРѕРєРё РґРІСѓС…РјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР°
 	for (int i = 0; i < rows; i++)
 	{
 		delete[]arr[i];
 		arr[i] = nullptr;
 	}
-	//2)удаляем массив указателей
+	//2)СѓРґР°Р»СЏРµРј РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№
 	delete[]arr;
 	arr = nullptr;
 #endif // DYNAMIC_MEMORY2
@@ -110,7 +112,7 @@ void FillRand(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		//обращение к элементам массива
+		//РѕР±СЂР°С‰РµРЅРёРµ Рє СЌР»РµРјРµРЅС‚Р°Рј РјР°СЃСЃРёРІР°
 		*(arr + i) = rand() % 100;
 	}
 }
@@ -119,7 +121,7 @@ void Print(const int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		//обращение к элементам массива
+		//РѕР±СЂР°С‰РµРЅРёРµ Рє СЌР»РµРјРµРЅС‚Р°Рј РјР°СЃСЃРёРІР°
 		cout<<*(arr + i) << "\t";
 	}
 	cout << endl;
@@ -139,19 +141,19 @@ void Print(int** arr, const int rows, const int cols)
 
 int* push_back(int arr[], int& n, int value)
 {
-	//1) создаем массив нужного массива
+	//1) СЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ РЅСѓР¶РЅРѕРіРѕ РјР°СЃСЃРёРІР°
 	int* buffer = new int[n + 1];
 
-	//2)копируем все значение из исходного массива в буффер
+	//2)РєРѕРїРёСЂСѓРµРј РІСЃРµ Р·РЅР°С‡РµРЅРёРµ РёР· РёСЃС…РѕРґРЅРѕРіРѕ РјР°СЃСЃРёРІР° РІ Р±СѓС„С„РµСЂ
 	for (int i = 0; i < n; i++)
 	{
 		buffer[i] = arr[i];
 	}
-	//3)удаляем старый массив
+	//3)СѓРґР°Р»СЏРµРј СЃС‚Р°СЂС‹Р№ РјР°СЃСЃРёРІ
 	delete[]arr;
-	//4)подменяем адрес стаорого массива адресом нового
+	//4)РїРѕРґРјРµРЅСЏРµРј Р°РґСЂРµСЃ СЃС‚Р°РѕСЂРѕРіРѕ РјР°СЃСЃРёРІР° Р°РґСЂРµСЃРѕРј РЅРѕРІРѕРіРѕ
 	arr = buffer;
-	//5)добавляем элемент
+	//5)РґРѕР±Р°РІР»СЏРµРј СЌР»РµРјРµРЅС‚
 	arr[n] = value;
 	//6)
 	n++;
@@ -160,18 +162,18 @@ int* push_back(int arr[], int& n, int value)
 
 int* push_front(int arr[], int& n, const int value)
 {
-	//1) создаем массив нужного массива
+	//1) СЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ РЅСѓР¶РЅРѕРіРѕ РјР°СЃСЃРёРІР°
 	int* buffer = new int[n + 1];
 	
-	//2)копируем все значение из исходного массива в буффер
+	//2)РєРѕРїРёСЂСѓРµРј РІСЃРµ Р·РЅР°С‡РµРЅРёРµ РёР· РёСЃС…РѕРґРЅРѕРіРѕ РјР°СЃСЃРёРІР° РІ Р±СѓС„С„РµСЂ
 	for (int i = 0; i < n; i++)
 	{
 		buffer[i+1] = arr[i];
 	}
-	//3)удаляем старый массив
+	//3)СѓРґР°Р»СЏРµРј СЃС‚Р°СЂС‹Р№ РјР°СЃСЃРёРІ
 	delete[]arr;
 	
-	//4)добавляем элемент
+	//4)РґРѕР±Р°РІР»СЏРµРј СЌР»РµРјРµРЅС‚
 	buffer[0] = value;
 	//6)
 	n++;
