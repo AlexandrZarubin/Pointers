@@ -19,8 +19,8 @@ int* insert(int arr[], int& n, const int index, const int value);//вставл�
 int** Allocate(const int rows, const int cols);		//выделяет память под двумерный динамиеский массив
 void Clear(int** arr,const int rows);				//удаляет двумерный динамиеский массив из памяти
 
-int** push_row_back(int** arr,int&rows,const int cols, int* arr1);					//добавляет строку в конец массива
-int** push_row_front(int** arr, int& rows, const int cols, int* arr1);				//добавляет строку в начало массива
+int** push_row_back(int** arr,int&rows,const int cols, int* arr1=nullptr);					//добавляет строку в конец массива
+int** push_row_front(int** arr, int& rows, const int cols, int* arr1=nullptr);				//добавляет строку в начало массива
 int** insert_row(int** arr, int& rows, const int cols, int* arr1,const int index);	//вставляет строку в массив по указанному индексу
 
 int** pop_row_back(int** arr,int&rows);						//удаляет последнюю строку из массива
@@ -33,7 +33,7 @@ int** insert_col(int** arr, const int rows,  int& cols, int* arr1, const int ind
 
 int** pop_col_back(int** arr,const int rows,int&cols);						//удаляет последний столбец из массива
 int** pop_col_front(int** arr, const int rows, int& cols);					//удаляет нулевой столбец из массива
-int** erase_col(int** arr, const int rows, int& cols,const int index);					//удаляет столбец из массива по указанному индексу
+int** erase_col(int** arr, const int rows, int& cols,const int index);		//удаляет столбец из массива по указанному индексу
 
 
 
@@ -104,7 +104,7 @@ void main()
 	//Print(arr1x, cols);
 	//TwoArray = 
 	cout << endl <<"push_row_back" << endl;
-	TwoArray=push_row_back(TwoArray,rows,cols,arr1x);
+	TwoArray=push_row_back(TwoArray,rows,cols, arr1x);
 	Print(TwoArray, rows, cols);//show
 	
 	cout << endl << "push_row_front" << endl;
@@ -329,10 +329,13 @@ int ** push_row_back(int** arr, int& rows, const int cols, int* arr1)
 		buffer[i] = arr[i];        //copy address
 	}
 	delete[]arr;
-	buffer[rows] = new int [cols]; //creat last row
-	for (int i = 0; i < cols; i++)
+	buffer[rows] = new int [cols] {}; //creat last row
+	if (arr1)
 	{
-		buffer[rows][i] = arr1[i]; //copy address new row
+		for (int i = 0; i < cols; i++)
+		{
+			buffer[rows][i] = arr1[i]; //copy address new row
+		}
 	}
 	arr = buffer;
 	rows++;
@@ -347,10 +350,13 @@ int** push_row_front(int** arr, int& rows, const int cols, int* arr1)
 		buffer[i+1] = arr[i];        //copy address
 	}
 	delete[]arr;
-	buffer[0] = new int[cols]; //creat last row
-	for (int i = 0; i < cols; i++)
+	buffer[0] = new int[cols] {}; //creat last row
+	if (arr1)
 	{
-		buffer[0][i] = arr1[i]; //copy address new row
+		for (int i = 0; i < cols; i++)
+		{
+			buffer[0][i] = arr1[i]; //copy address new row
+		}
 	}
 	arr = buffer;
 	rows++;
