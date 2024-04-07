@@ -28,9 +28,9 @@ int** pop_row_back(int** arr,int&rows);						//удаляет последнюю
 int** pop_row_front(int** arr, int& rows);					//удаляет нулевую строку из массива
 int** erase_row(int** arr, int& rows, const int rowIndex);	//удаляет строку из массива по заданному индексу
 
-int** push_col_back(int** arr, const int rows, int& cols, int* arr1=nullptr);	//добавляет столбец в конец массива
-int** push_col_front(int** arr, const int rows, int& cols, int* arr1=nullptr);	//добавляет столбец в начало массива
-int** insert_col(int** arr, const int rows,  int& cols, const int index,int* arr1=nullptr); //вставляет столбец в массив по указанному индексу
+void push_col_back(int** arr, const int rows, int& cols, int* arr1=nullptr);	//добавляет столбец в конец массива
+void push_col_front(int** arr, const int rows, int& cols, int* arr1=nullptr);	//добавляет столбец в начало массива
+void insert_col(int** arr, const int rows,  int& cols, const int index,int* arr1=nullptr); //вставляет столбец в массив по указанному индексу
 
 int** pop_col_back(int** arr,const int rows,int&cols);						//удаляет последний столбец из массива
 int** pop_col_front(int** arr, const int rows, int& cols);					//удаляет нулевой столбец из массива
@@ -130,15 +130,15 @@ void main()
 	Print(TwoArray, rows, cols);//show
 
 	cout << endl << "push_col_back" << endl;
-	TwoArray = push_col_back(TwoArray, rows, cols,arr1x);
+	push_col_back(TwoArray, rows, cols,arr1x);
 	Print(TwoArray, rows, cols);//show
 
 	cout << endl << "push_col_front" << endl;
-	TwoArray = push_col_front(TwoArray, rows, cols, arr1x);
+	push_col_front(TwoArray, rows, cols, arr1x);
 	Print(TwoArray, rows, cols);//show
 
 	cout << endl << "insert_col" << endl;
-	TwoArray = insert_col(TwoArray, rows, cols,2, arr1x);
+	insert_col(TwoArray, rows, cols,2, arr1x);
 	Print(TwoArray, rows, cols);//show
 
 	cout << endl << "pop_col_back" << endl;
@@ -434,7 +434,7 @@ int** erase_row(int** arr, int& rows, const int rowIndex)
 	return buffer;
 }
 
-int** push_col_back(int** arr, const int rows, int& cols, int* arr1)
+void push_col_back(int** arr, const int rows, int& cols, int* arr1)
 {
 	for (int i = 0; i < rows; i++)
 	{
@@ -452,7 +452,7 @@ int** push_col_back(int** arr, const int rows, int& cols, int* arr1)
 		for (int i = 0; i < cols; i++) arr[i][cols] = arr1[i];
 	}
 	cols++;
-	return arr;
+	
 	
 	/*int** buffer = Allocate(rows, cols + 1); //creat 2Darr address
 	for (int i = 0; i < rows; i++)
@@ -476,7 +476,7 @@ int** push_col_back(int** arr, const int rows, int& cols, int* arr1)
 	*/
 }
 
-int** push_col_front(int** arr, const int rows, int& cols, int* arr1)
+void push_col_front(int** arr, const int rows, int& cols, int* arr1)
 {
 	
 	for (int i = 0; i < rows; i++)
@@ -496,7 +496,7 @@ int** push_col_front(int** arr, const int rows, int& cols, int* arr1)
 		for (int i = 0; i < rows; i++) arr[i][0] = arr1[i];
 	}
 	cols++;
-	return arr;
+	
 	
 	
 	
@@ -523,7 +523,7 @@ int** push_col_front(int** arr, const int rows, int& cols, int* arr1)
 	*/
 }
 
-int** insert_col(int** arr, const int rows, int& cols,  const int index,int* arr1)
+void insert_col(int** arr, const int rows, int& cols,  const int index,int* arr1)
 {
 	
 	for (int i = 0; i < rows; i++)
@@ -542,7 +542,7 @@ int** insert_col(int** arr, const int rows, int& cols,  const int index,int* arr
 		for (int i = 0; i < rows; i++) arr[i][index] = arr1[i];
 	}
 	cols++;
-	return arr;
+	
 	
 	
 	
