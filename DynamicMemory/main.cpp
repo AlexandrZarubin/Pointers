@@ -4,7 +4,8 @@ using std::cout;
 using std::endl;
 #define tab "\t"
 
-void FillRand(int arr[], const int n);
+void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
+void FillRand(int** arr, const int rows, const int cols, int minRand = 0, int maxRand = 100);
 void Print(const int arr[], const int n);
 void Print( int** arr, const int rows, const int cols);
 
@@ -101,6 +102,7 @@ void main()
 	Print(TwoArray, rows, cols);//show
 	int* arr1x = new int[cols];//creat arr1x
 	FillRand(arr1x,cols);//filling
+	FillRand(TwoArray,rows,cols);
 	//Print(arr1x, cols);
 	//TwoArray = 
 	cout << endl <<"push_row_back" << endl;
@@ -165,12 +167,23 @@ void main()
 
 }
 
-void FillRand(int arr[], const int n)
+void FillRand(int arr[], const int n, int minRand, int maxRand)
 {
 	for (int i = 0; i < n; i++)
 	{
 		//обращение к элементам массива
-		*(arr + i) = rand() % 100;
+		*(arr + i) = rand() % ((maxRand + 1) - (-minRand) + minRand);
+	}
+}
+
+void FillRand(int** arr, const int rows, const int cols, int minRand, int maxRand)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			arr[i][j] = rand() % ((maxRand + 1) - (-minRand) + minRand);
+		}
 	}
 }
 
@@ -423,8 +436,25 @@ int** erase_row(int** arr, int& rows, const int rowIndex)
 
 int** push_col_back(int** arr, const int rows, int& cols, int* arr1)
 {
-	int** buffer = Allocate(rows,cols+1); //creat 2Darr address
-
+	for (int i = 0; i < rows; i++)
+	{
+		int* bufferRows = new int[cols + 1] {};
+		for (int j = 0; j < cols; j++)
+		{
+			bufferRows[j] = arr[i][j];
+		}
+		delete[]arr[i];
+		arr[i] = bufferRows;
+		
+	}
+	if (arr1)
+	{
+		for (int i = 0; i < cols; i++) arr[i][cols] = arr1[i];
+	}
+	cols++;
+	return arr;
+	
+	/*int** buffer = Allocate(rows, cols + 1); //creat 2Darr address
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < cols ; j++)
@@ -443,11 +473,34 @@ int** push_col_back(int** arr, const int rows, int& cols, int* arr1)
 	arr = buffer;
 	cols++;
 	return buffer;
+	*/
 }
 
 int** push_col_front(int** arr, const int rows, int& cols, int* arr1)
 {
-	int** buffer = Allocate(rows, cols+1); //creat 2Darr address
+	
+	for (int i = 0; i < rows; i++)
+	{
+		int* bufferRows = new int[cols + 1] {};
+		for (int j = 0; j < cols; j++)
+		{
+			bufferRows[j+1] = arr[i][j];
+		}
+		delete[]arr[i];
+		arr[i] = bufferRows;
+
+	}
+
+	if (arr1)
+	{
+		for (int i = 0; i < rows; i++) arr[i][0] = arr1[i];
+	}
+	cols++;
+	return arr;
+	
+	
+	
+	/*int** buffer = Allocate(rows, cols + 1); //creat 2Darr address
 
 	for (int i = 0; i < rows; i++)
 	{
@@ -467,11 +520,33 @@ int** push_col_front(int** arr, const int rows, int& cols, int* arr1)
 	arr = buffer;
 	cols++;
 	return buffer;
+	*/
 }
 
 int** insert_col(int** arr, const int rows, int& cols,  const int index,int* arr1)
 {
-	int** buffer = Allocate(rows, cols + 1); //creat 2Darr address
+	
+	for (int i = 0; i < rows; i++)
+	{
+		int* bufferRows = new int[cols + 1] {};
+		for (int j = 0; j < cols; j++)
+		{
+			j < index ? bufferRows[j] = arr[i][j] : bufferRows[j + 1] = arr[i][j];
+		}
+		delete[]arr[i];
+		arr[i] = bufferRows;
+
+	}
+	if (arr1)
+	{
+		for (int i = 0; i < rows; i++) arr[i][index] = arr1[i];
+	}
+	cols++;
+	return arr;
+	
+	
+	
+	/*int** buffer = Allocate(rows, cols + 1); //creat 2Darr address
 
 	for (int i = 0; i < rows; i++)
 	{
@@ -491,6 +566,7 @@ int** insert_col(int** arr, const int rows, int& cols,  const int index,int* arr
 	arr = buffer;
 	cols++;
 	return buffer;
+	*/
 }
 
 int** pop_col_back(int** arr, const int rows, int& cols)
