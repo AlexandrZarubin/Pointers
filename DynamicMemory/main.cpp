@@ -101,9 +101,11 @@ void main()
 	cout << endl << "dd" << endl;
 	Print(TwoArray, rows, cols);//show
 	int* arr1x = new int[cols];//creat arr1x
-	FillRand(arr1x,cols);//filling
+	FillRand(arr1x,cols,-100,-20);//filling
 	FillRand(TwoArray,rows,cols);
-	//Print(arr1x, cols);
+	cout << endl<<"dddd\n";
+	Print(arr1x, cols);
+	cout << endl<<"ddddd";
 	//TwoArray = 
 	cout << endl <<"push_row_back" << endl;
 	TwoArray=push_row_back(TwoArray,rows,cols, arr1x);
@@ -173,6 +175,8 @@ void FillRand(int arr[], const int n, int minRand, int maxRand)
 	{
 		//обращение к элементам массива
 		*(arr + i) = rand() % ((maxRand + 1) - (-minRand) + minRand);
+		//*(arr + i) = rand() % (maxRand  - minRand) + minRand;
+
 	}
 }
 
