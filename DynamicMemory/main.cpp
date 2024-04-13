@@ -409,6 +409,7 @@ template<typename T>void push_col_back(T** arr, const int rows, int& cols)
 		int colsBuffer = cols;
 		arr[i] = push_back(arr[i], colsBuffer);
 	}
+	cols++;
 }
 
 template<typename T>void push_col_front(T** arr, const int rows, int& cols)
